@@ -10,6 +10,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        resumeBG: "#D9D9D9",
         btnColor: "#0F766E",
         accordionBGColor: "#AE8B70",
         backgroundCardColor: "hsl(26,28%,56%,15%)",
