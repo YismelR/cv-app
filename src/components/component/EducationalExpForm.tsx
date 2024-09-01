@@ -49,7 +49,7 @@ export default function EducationalExpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col space-y-4 gap-4 pt-8 w-1/2"
+        className="flex flex-col gap-4 pt-8 w-1/2"
       >
         <FormField
           control={form.control}

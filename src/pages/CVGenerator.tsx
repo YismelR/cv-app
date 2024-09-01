@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function CVGenerator() {
   return (
-    <div className="bg-backgroundCardColor flex flex-col gap-10 my-8 p-8 rounded-2xl w-[600px] place-items-center">
+    <div className="bg-backgroundCardColor flex flex-col gap-10 my-8 p-8 rounded-2xl w-[600px] place-items-center min-h-full">
       <h1 className="font-bold text-3xl">CV/Resume Generator</h1>
       <AccordionCategory />
       <Button
