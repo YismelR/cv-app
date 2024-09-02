@@ -30,7 +30,7 @@ const formSchema = z.object({
     message: "Username must be at least 2 characters.",
   }),
 });
-export default function PracticalExpForm() {
+export default function PracticalExpForm({ setExperience }: any) {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,7 +47,7 @@ export default function PracticalExpForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    setExperience(values);
   }
 
   return (
@@ -133,7 +133,6 @@ export default function PracticalExpForm() {
             </FormItem>
           )}
         />
-        {/* <Button type="submit">Submit</Button> */}
       </form>
     </Form>
   );

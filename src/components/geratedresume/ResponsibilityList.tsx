@@ -1,7 +1,7 @@
-export default function ResponsibilityList() {
+export default function ResponsibilityList({ listExp }: any) {
   return (
     <ul className="list-disc pl-6">
-      <li>hello</li>
+      <li>{listExp.workdescription}</li>
     </ul>
   );
 }

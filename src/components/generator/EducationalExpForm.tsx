@@ -26,7 +26,7 @@ const formSchema = z.object({
     message: "Username must be at least 2 characters.",
   }),
 });
-export default function EducationalExpForm() {
+export default function EducationalExpForm({ setEducation }: any) {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,7 +42,7 @@ export default function EducationalExpForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    setEducation(values);
   }
 
   return (
