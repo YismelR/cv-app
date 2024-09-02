@@ -27,7 +27,11 @@ const formSchema = z.object({
     message: "End date must be at least 2 characters.",
   }),
 });
-export default function EducationalExpForm({ setEducation, eduData }: any) {
+export default function EducationalExpForm({
+  setEducation,
+  eduData,
+  setIsSavedEdu,
+}: any) {
   const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -40,6 +44,7 @@ export default function EducationalExpForm({ setEducation, eduData }: any) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     setEducation(values);
+    setIsSavedEdu(true);
     toast({
       title: "Successfully Saved",
       description: "Friday, February 10, 2023 at 5:57 PM",

@@ -23,6 +23,9 @@ function App() {
     enddate: "",
     workdescription: "",
   });
+  const [isSavedInfo, setIsSavedInfo] = useState(false);
+  const [isSavedEdu, setIsSavedEdu] = useState(false);
+  const [isSavedExp, setIsSavedExp] = useState(false);
 
   return (
     <div className="min-h-full bg-[#111827] flex place-content-center text-white">
@@ -35,6 +38,12 @@ function App() {
           setEdu={setEduData}
           setExp={setExpData}
           setCurrent={setCurrentPage}
+          isSavedInfo={isSavedInfo}
+          isSavedEdu={isSavedEdu}
+          isSavedExp={isSavedExp}
+          setIsSavedInfo={setIsSavedInfo}
+          setIsSavedEdu={setIsSavedEdu}
+          setIsSavedExp={setIsSavedExp}
         />
       )}
       {currentPage === "resume" && (

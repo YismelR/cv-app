@@ -31,7 +31,11 @@ const formSchema = z.object({
     message: "Main Responsibilities must be at least 2 characters.",
   }),
 });
-export default function PracticalExpForm({ setExperience, expData }: any) {
+export default function PracticalExpForm({
+  setExperience,
+  expData,
+  setIsSavedExp,
+}: any) {
   const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -44,6 +48,7 @@ export default function PracticalExpForm({ setExperience, expData }: any) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     setExperience(values);
+    setIsSavedExp(true);
     toast({
       title: "Successfully Saved",
       description: "Friday, February 10, 2023 at 5:57 PM",

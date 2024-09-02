@@ -25,7 +25,11 @@ const formSchema = z.object({
   }),
 });
 
-export default function GeneralInfoForm({ setTheInfo, formData }: any) {
+export default function GeneralInfoForm({
+  setTheInfo,
+  formData,
+  setIsSavedInfo,
+}: any) {
   const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -39,6 +43,7 @@ export default function GeneralInfoForm({ setTheInfo, formData }: any) {
     // ✅ This will be type-safe and validated.
 
     setTheInfo(values);
+    setIsSavedInfo(true);
     toast({
       title: "Successfully Saved",
       description: "Friday, February 10, 2023 at 5:57 PM",
