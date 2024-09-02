@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   schoolname: z.string().min(2, {
@@ -26,16 +27,12 @@ const formSchema = z.object({
     message: "End date must be at least 2 characters.",
   }),
 });
-export default function EducationalExpForm({ setEducation }: any) {
+export default function EducationalExpForm({ setEducation, eduData }: any) {
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      schoolname: "",
-      studytitle: "",
-      startyear: "",
-      endyear: "",
-    },
+    defaultValues: eduData,
   });
 
   // 2. Define a submit handler.
@@ -43,13 +40,17 @@ export default function EducationalExpForm({ setEducation }: any) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     setEducation(values);
+    toast({
+      title: "Successfully Saved",
+      description: "Friday, February 10, 2023 at 5:57 PM",
+    });
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 pt-8 w-1/2"
+        className="flex flex-col gap-4 pt-8 w-2/3"
       >
         <FormField
           control={form.control}
@@ -91,7 +92,7 @@ export default function EducationalExpForm({ setEducation }: any) {
                   Start Year
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="" {...field} />
+                  <Input placeholder="YYYY" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -106,7 +107,7 @@ export default function EducationalExpForm({ setEducation }: any) {
                   End Year
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="" {...field} />
+                  <Input placeholder="YYYY" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

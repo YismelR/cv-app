@@ -3,7 +3,20 @@ import EducationalExp from "@/components/geratedresume/EducationalExp";
 import GeneralInfo from "@/components/geratedresume/GeneralInfo";
 import PracticalExp from "@/components/geratedresume/PracticalExp";
 
-export default function ResumeGenerated({ formData, eduData, expData }: any) {
+export default function ResumeGenerated({
+  formData,
+  eduData,
+  expData,
+  setCurrent,
+}: any) {
+  function handleEdit() {
+    setCurrent("form");
+  }
+
+  function handleDownload() {
+    console.log("this button should allow me to download");
+  }
+
   return (
     <div className="bg-backgroundCardColor flex flex-col gap-10 my-8 p-8 rounded-2xl w-[600px] min-h-full">
       <h1 className="font-bold text-3xl place-self-center">
@@ -15,8 +28,8 @@ export default function ResumeGenerated({ formData, eduData, expData }: any) {
         <PracticalExp exp={expData} />
       </main>
       <footer className="flex justify-between mt-auto">
-        <SubmitButton name="Edit" />
-        <SubmitButton name="Download" />
+        <SubmitButton name="Edit" onSubmit={handleEdit} />
+        <SubmitButton name="Download" onSubmit={handleDownload} />
       </footer>
     </div>
   );

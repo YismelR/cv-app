@@ -12,6 +12,9 @@ export default function AccordionCategory({
   formSetter,
   eduSetter,
   expSetter,
+  expData,
+  eduData,
+  formData,
 }: any) {
   return (
     <>
@@ -23,19 +26,19 @@ export default function AccordionCategory({
         <AccordionItem value="item-1">
           <AccordionTrigger>General Information</AccordionTrigger>
           <AccordionContent>
-            <GeneralInfoForm setTheInfo={formSetter} />
+            <GeneralInfoForm setTheInfo={formSetter} formData={formData} />
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>Educational Experience</AccordionTrigger>
           <AccordionContent>
-            <EducationalExpForm setEducation={eduSetter} />
+            <EducationalExpForm setEducation={eduSetter} eduData={eduData} />
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>Practical Experience</AccordionTrigger>
           <AccordionContent>
-            <PracticalExpForm setExperience={expSetter} />
+            <PracticalExpForm setExperience={expSetter} expData={expData} />
           </AccordionContent>
         </AccordionItem>
       </Accordion>

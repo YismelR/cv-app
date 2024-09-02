@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   companyname: z.string().min(2, {
@@ -30,17 +31,12 @@ const formSchema = z.object({
     message: "Main Responsibilities must be at least 2 characters.",
   }),
 });
-export default function PracticalExpForm({ setExperience }: any) {
+export default function PracticalExpForm({ setExperience, expData }: any) {
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      companyname: "",
-      positiontitle: "",
-      startdate: "",
-      enddate: "",
-      workdescription: "",
-    },
+    defaultValues: expData,
   });
 
   // 2. Define a submit handler.
@@ -48,13 +44,17 @@ export default function PracticalExpForm({ setExperience }: any) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     setExperience(values);
+    toast({
+      title: "Successfully Saved",
+      description: "Friday, February 10, 2023 at 5:57 PM",
+    });
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 pt-8 w-1/2"
+        className="flex flex-col gap-4 pt-8 w-2/3"
       >
         <FormField
           control={form.control}
@@ -96,7 +96,7 @@ export default function PracticalExpForm({ setExperience }: any) {
                   Start Date
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="" {...field} />
+                  <Input placeholder="MM/YYYY" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -111,7 +111,7 @@ export default function PracticalExpForm({ setExperience }: any) {
                   End Date
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="" {...field} />
+                  <Input placeholder="MM/YYYY" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

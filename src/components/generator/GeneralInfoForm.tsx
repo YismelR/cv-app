@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   fullname: z.string().min(2, {
@@ -24,15 +25,12 @@ const formSchema = z.object({
   }),
 });
 
-export default function GeneralInfoForm({ setTheInfo }: any) {
+export default function GeneralInfoForm({ setTheInfo, formData }: any) {
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      fullname: "",
-      email: "",
-      phonenumber: "",
-    },
+    defaultValues: formData,
   });
 
   // 2. Define a submit handler.
@@ -41,13 +39,17 @@ export default function GeneralInfoForm({ setTheInfo }: any) {
     // ✅ This will be type-safe and validated.
 
     setTheInfo(values);
+    toast({
+      title: "Successfully Saved",
+      description: "Friday, February 10, 2023 at 5:57 PM",
+    });
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 pt-8 w-1/2"
+        className="flex flex-col gap-4 pt-8 w-2/3"
       >
         <FormField
           control={form.control}
