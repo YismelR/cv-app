@@ -14,13 +14,13 @@ import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   fullname: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Full name must be at least 2 characters.",
   }),
   email: z.string().email().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Email must be at least 2 characters.",
   }),
   phonenumber: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Phone number must be at least 2 characters.",
   }),
 });
 
@@ -90,7 +90,12 @@ export default function GeneralInfoForm({ setTheInfo }: any) {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          className="bg-btnColor rounded-xl w-20 place-self-end font-semibold"
+        >
+          Save
+        </Button>
       </form>
     </Form>
   );

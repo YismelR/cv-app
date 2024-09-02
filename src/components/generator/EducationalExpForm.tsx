@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-// import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -17,13 +17,13 @@ const formSchema = z.object({
     message: "Username must be at least 2 characters.",
   }),
   studytitle: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Study title must be at least 2 characters.",
   }),
   startyear: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Start date must be at least 2 characters.",
   }),
   endyear: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "End date must be at least 2 characters.",
   }),
 });
 export default function EducationalExpForm({ setEducation }: any) {
@@ -113,6 +113,12 @@ export default function EducationalExpForm({ setEducation }: any) {
             )}
           />
         </div>
+        <Button
+          type="submit"
+          className="bg-btnColor rounded-xl w-20 place-self-end font-semibold"
+        >
+          Save
+        </Button>
       </form>
     </Form>
   );

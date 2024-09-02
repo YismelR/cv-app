@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-// import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,19 +15,19 @@ import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
   companyname: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Company name must be at least 2 characters.",
   }),
   positiontitle: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Position title must be at least 2 characters.",
   }),
   startdate: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Start date must be at least 2 characters.",
   }),
   enddate: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "End date must be at least 2 characters.",
   }),
   workdescription: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Main Responsibilities must be at least 2 characters.",
   }),
 });
 export default function PracticalExpForm({ setExperience }: any) {
@@ -133,6 +133,12 @@ export default function PracticalExpForm({ setExperience }: any) {
             </FormItem>
           )}
         />
+        <Button
+          type="submit"
+          className="bg-btnColor rounded-xl w-20 place-self-end font-semibold"
+        >
+          Save
+        </Button>
       </form>
     </Form>
   );

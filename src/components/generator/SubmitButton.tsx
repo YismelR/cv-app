@@ -8,7 +8,7 @@ export default function SubmitButton({ name }: SubmitButtonProps) {
   return (
     <Button
       type="submit"
-      className="place-self-end mt-auto text-2xl bg-btnColor rounded-3xl w-[148px] h-[60px]"
+      className="place-self-end mt-auto text-2xl bg-btnColor rounded-xl w-[148px] h-[55px]"
     >
       {name}
     </Button>
