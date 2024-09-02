@@ -4,18 +4,20 @@ export default function PracticalExp({ exp }: any) {
   return (
     <section>
       <h1 className="text-base font-semibold">Practical Experience</h1>
-      <div className="border border-black mt-2"></div>
-      <div className="flex justify-between">
-        <div>
-          <p>{exp.companyname}</p>
-          <p>{exp.positiontitle}</p>
+      <div className="border border-black my-2"></div>
+      <div className="flex flex-col gap-3">
+        <div className="flex justify-between">
+          <div className="font-semibold">
+            <p>{exp.companyname}</p>
+            <p className="italic">{exp.positiontitle}</p>
+          </div>
+          <div className="italic">
+            <p>Start Date: {exp.startdate}</p>
+            <p>End Date: {exp.enddate}</p>
+          </div>
         </div>
-        <div>
-          <p>Start Date: {exp.startdate}</p>
-          <p>End Date: {exp.enddate}</p>
-        </div>
+        <ResponsibilityList listExp={exp} />
       </div>
-      <ResponsibilityList listExp={exp} />
     </section>
   );
 }
